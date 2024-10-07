@@ -66,6 +66,7 @@ app.post("/api/get-home", async (req, res) => {
         await client.connect();
         let data = {}
         data.faqs = await client.db(process.env.DB_NAME).collection("faqs").find({}).toArray();
+        data.iotw = await client.db(process.env.DB_NAME).collection("iotw").find({}).toArray();
         res.json(data)
     } catch (error) {
         console.error("Connection failed!", error);
